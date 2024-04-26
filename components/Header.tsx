@@ -1,6 +1,10 @@
-import React from "react";
+interface Props {
+  type: string;
+  query: string;
+  category: string;
+}
 
-const Header = () => {
+const Header = ({ type, query, category }: Props) => {
   return <div>Header</div>;
 };
 

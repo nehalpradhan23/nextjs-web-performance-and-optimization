@@ -12,7 +12,7 @@ interface Props {
 
 export default async function Home({ searchParams }: Props) {
   const resources = await getResources({
-    query: "",
+    query: searchParams?.query || "",
     category: searchParams?.category || "",
     page: "1",
   });
@@ -32,7 +32,11 @@ export default async function Home({ searchParams }: Props) {
       </section>
       <Filters />
       <section className="flex-center mt-6 w-full flex-col sm:mt-20">
-        <Header />
+        <Header
+          type="Resources"
+          query={searchParams?.query || ""}
+          category={searchParams?.category || ""}
+        />
         <div className="mt-12 flex w-full flex-wrap justify-center gap-16 sm:justify-start">
           {resources?.length > 0 ? (
             resources.map((resource: any) => (
